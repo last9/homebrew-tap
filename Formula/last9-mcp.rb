@@ -13,17 +13,17 @@ class Last9Mcp < Formula
 
   # Binary downloads for different architectures
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-darwin-arm64"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-server_Darwin_arm64.tar.gz"
+    sha256 "8dca345e1732edb6d2c8c875de578405f061670c831bb743f5f7743fde0a16b0"
   elsif OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-darwin-amd64"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-server_Darwin_x86_64.tar.gz"
+    sha256 "cd93fcc0bd0c91b32e937af97c090135f7e8356783b8e5bff479ac084c0a1bfa"
   elsif OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-linux-amd64"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-server_Linux_x86_64.tar.gz"
+    sha256 "bb584e88da56e32e5ab401e80cae83b77f8dc65b7718ad2410e09f7725a575e3"
   elsif OS.linux? && Hardware::CPU.arm?
-    url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-linux-arm64"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-server_Linux_arm64.tar.gz"
+    sha256 "759f1984650a20a98487f20ad97fddd3705e76e8463af05f958d2812304bda78"
   end
 
   # Optional but recommended dependencies
@@ -31,8 +31,8 @@ class Last9Mcp < Formula
   depends_on "jq" => :recommended
 
   def install
-    binary_name = File.basename(Dir["*"].first)
-    bin.install binary_name => "last9-mcp"
+    # Extract the binary from the tarball
+    bin.install "last9-mcp-server" => "last9-mcp"
 
     # Generate and install shell completions
     output = Utils.safe_popen_read("#{bin}/last9-mcp", "completion", err: :out)
