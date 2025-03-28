@@ -48,15 +48,6 @@ class Last9Mcp < Formula
     <<~EOS
       To use Last9 MCP, you need to set up your API key:
         export LAST9_API_KEY=your_api_key
-      
-      For security best practices:
-      1. Store your API key in a secure credential manager
-      2. Add LAST9_API_KEY to your .gitignore if you're setting it in a file
-      3. Never commit your API key to version control
-      4. Use environment variables or a secure secrets manager in CI/CD
-
-      For more information and security guidelines, visit:
-        https://last9.io/docs/security
         https://last9.io/docs
     EOS
   end
