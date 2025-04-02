@@ -1,6 +1,6 @@
-# Last9 MCP Homebrew Formula
+# Last9 Homebrew Formula
 
-This repository contains the Homebrew formula for installing the Last9 MCP (Monitoring Control Plane) CLI tool. This is the official Homebrew tap for Last9 tools.
+This repository contains the Homebrew formula for installing the Last9 tools. This is the official Homebrew tap for Last9 tools.
 
 ## Security Notice
 
@@ -16,7 +16,7 @@ This tap is intentionally public and contains:
 # Add the Last9 tap
 brew tap last9/tap
 
-# Install the Last9 MCP CLI
+# Install the Last9 MCP Server
 brew install last9-mcp
 ```
 
