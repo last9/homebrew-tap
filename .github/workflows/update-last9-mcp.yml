@@ -21,8 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          brew install wget
-          brew install gnu-sed
+          sudo apt-get update
+          sudo apt-get install -y wget jq
 
       - name: Get latest release
         id: latest_release
@@ -63,10 +63,10 @@ jobs:
             
             # Update version and SHA256 values in formula
             sed -i "s/version \".*\"/version \"$LATEST_VERSION\"/" Formula/last9-mcp.rb
-            sed -i "s/sha256 \".*\" # Darwin ARM64/sha256 \"$DARWIN_ARM64_SHA\" # Darwin ARM64/" Formula/last9-mcp.rb
-            sed -i "s/sha256 \".*\" # Darwin x86_64/sha256 \"$DARWIN_AMD64_SHA\" # Darwin x86_64/" Formula/last9-mcp.rb
-            sed -i "s/sha256 \".*\" # Linux x86_64/sha256 \"$LINUX_AMD64_SHA\" # Linux x86_64/" Formula/last9-mcp.rb
-            sed -i "s/sha256 \".*\" # Linux ARM64/sha256 \"$LINUX_ARM64_SHA\" # Linux ARM64/" Formula/last9-mcp.rb
+            sed -i "s/sha256 \".*\"/sha256 \"$DARWIN_ARM64_SHA\"/" Formula/last9-mcp.rb
+            sed -i "0,/sha256 \".*\"/! {0,/sha256 \".*\"/ s/sha256 \".*\"/sha256 \"$DARWIN_AMD64_SHA\"/}" Formula/last9-mcp.rb
+            sed -i "0,/sha256 \".*\"/! {0,/sha256 \".*\"/ s/sha256 \".*\"/sha256 \"$LINUX_AMD64_SHA\"/}" Formula/last9-mcp.rb
+            sed -i "0,/sha256 \".*\"/! {0,/sha256 \".*\"/ s/sha256 \".*\"/sha256 \"$LINUX_ARM64_SHA\"/}" Formula/last9-mcp.rb
           else
             echo "update_needed=false" >> $GITHUB_OUTPUT
           fi
