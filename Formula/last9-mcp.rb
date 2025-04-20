@@ -46,9 +46,8 @@ class Last9Mcp < Formula
 
   def caveats
     <<~EOS
-      To use Last9 MCP, you need to set up your API key:
-        export LAST9_API_KEY=your_api_key
-        https://last9.io/docs
+      To use Last9 MCP, please refer to the documentation at:
+        https://last9.io/docs/mcp
     EOS
   end
 

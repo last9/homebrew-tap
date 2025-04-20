@@ -2,6 +2,15 @@
 
 This repository contains the Homebrew formula for installing the Last9 tools. This is the official Homebrew tap for Last9 tools.
 
+## Prerequisites
+- curl (recommended)
+- jq (recommended)
+
+## System Requirements
+Supported platforms:
+- macOS (Apple Silicon/ARM64 and Intel/x86_64)
+- Linux (ARM64 and x86_64)
+
 ## Security Notice
 
 This tap is intentionally public and contains:
@@ -22,22 +31,15 @@ brew install last9-mcp
 
 ## Post-Installation Setup
 
-1. Set up your Last9 API key securely:
-```bash
-# Option 1: Set in your shell session
-export LAST9_API_KEY=your_api_key
+Follow the instructions [here](https://last9.io/docs/mcp/).
 
-# Option 2: Add to your shell profile (.bashrc, .zshrc, etc.)
-echo 'export LAST9_API_KEY=your_api_key' >> ~/.zshrc  # or ~/.bashrc
+## Shell Completion
+Last9 MCP comes with shell completion support for:
+- Bash
+- Zsh
+- Fish
 
-# Option 3: Use your OS's credential manager (recommended)
-security add-generic-password -a "$USER" -s "last9-mcp" -w "your_api_key"  # macOS
-```
-
-2. Verify the installation:
-```bash
-last9-mcp version
-```
+The completions are automatically installed with the package.
 
 ## Security Best Practices
 
@@ -45,7 +47,6 @@ last9-mcp version
    - Never commit your API key to version control
    - Store your API key in a secure credential manager
    - Use environment variables in CI/CD pipelines
-   - Add `LAST9_API_KEY` to your `.gitignore`
 
 2. Binary Verification:
    - The formula automatically verifies SHA256 checksums
@@ -64,24 +65,6 @@ last9-mcp version
 - Recommended dependencies (curl, jq) for enhanced functionality
 - Automatic binary verification via checksums
 
-## Usage
-
-Here are some common commands:
-
-```bash
-# Show help
-last9-mcp --help
-
-# Initialize configuration
-last9-mcp init
-
-# Check status
-last9-mcp status
-
-# View version
-last9-mcp version
-```
-
 ## Updating
 
 To update to the latest version:
@@ -91,42 +74,17 @@ brew update
 brew upgrade last9-mcp
 ```
 
-## Development
-
-To install from HEAD:
-
-```bash
-brew install --HEAD last9-mcp
-```
-
-## CI/CD Integration
-
-When using Last9 MCP in CI/CD environments:
-
-1. Set the API key as a secure environment variable
-2. Never print or log the API key
-3. Use secure secrets management services
-4. Rotate API keys regularly
-
-Example GitHub Actions setup:
-```yaml
-env:
-  LAST9_API_KEY: ${{ secrets.LAST9_API_KEY }}
-```
-
 ## Documentation
 
 For more information about using Last9 MCP, visit:
-- [Last9 Documentation](https://last9.io/docs)
-- [Last9 Security Guidelines](https://last9.io/docs/security)
+- [Last9 MCP Server Documentation](https://last9.io/docs/mcp)
 - [GitHub Repository](https://github.com/last9/last9-mcp-server)
 
 ## Support
 
 For issues, questions, or contributions:
 - Open an issue in this repository
-- Contact Last9 support at support@last9.io
-- Visit our [Community Forum](https://community.last9.io)
+- Contact Last9 support at cs@last9.io
 
 ## License
 
