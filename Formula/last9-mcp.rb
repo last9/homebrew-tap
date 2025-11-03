@@ -1,7 +1,7 @@
 class Last9Mcp < Formula
   desc "Last9 MCP Server CLI tool for monitoring and observability"
   homepage "https://last9.io"
-  version "0.1.15"
+  version "0.2.0"
   license "Apache-2.0"
   head "https://github.com/last9/last9-mcp-server.git", branch: "main"
 
@@ -14,16 +14,16 @@ class Last9Mcp < Formula
   # Binary downloads for different architectures
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-server_Darwin_arm64.tar.gz"
-    sha256 "8f49887f7dee5dff50be28301d63334c2e1064cf2f52ea8a61a59e19b2b65a47"
+    sha256 "e9062d67520dc917e278b24e8c66d402ed35babfb17636e76bf3c96455381d24"
   elsif OS.mac? && Hardware::CPU.intel?
     url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-server_Darwin_x86_64.tar.gz"
-    sha256 "167ce7a556e69afe1cdc9d7e2c9cd49c6ff8f6af9695538442eb723e839a0d00"
+    sha256 "21431ff52f79b48b29eeb922504642b3ca2da78a905e331943a5de8ac2881a5d"
   elsif OS.linux? && Hardware::CPU.intel?
     url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-server_Linux_x86_64.tar.gz"
-    sha256 "8f49887f7dee5dff50be28301d63334c2e1064cf2f52ea8a61a59e19b2b65a47"
+    sha256 "e9062d67520dc917e278b24e8c66d402ed35babfb17636e76bf3c96455381d24"
   elsif OS.linux? && Hardware::CPU.arm?
     url "https://github.com/last9/last9-mcp-server/releases/download/v#{version}/last9-mcp-server_Linux_arm64.tar.gz"
-    sha256 "8f49887f7dee5dff50be28301d63334c2e1064cf2f52ea8a61a59e19b2b65a47"
+    sha256 "e9062d67520dc917e278b24e8c66d402ed35babfb17636e76bf3c96455381d24"
   end
 
   # Optional but recommended dependencies
