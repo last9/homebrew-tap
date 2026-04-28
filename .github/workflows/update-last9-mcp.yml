@@ -90,9 +90,8 @@ jobs:
           delete-branch: true
           labels: automated-pr, dependencies
 
-      - name: Enable Auto-merge
+      - name: Merge Pull Request
         if: steps.create-pr.outputs.pull-request-number
-        run: |
-          gh pr merge --auto --merge "${{ steps.create-pr.outputs.pull-request-number }}"
+        run: gh pr merge --merge "${{ steps.create-pr.outputs.pull-request-number }}"
         env:
-          GH_TOKEN: ${{ github.token }} 
+          GH_TOKEN: ${{ github.token }}
